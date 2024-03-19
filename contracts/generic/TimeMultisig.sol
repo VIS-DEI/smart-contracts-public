@@ -164,8 +164,9 @@ contract TimeMultisig is Pausable {
             }
         owners.pop();
 
+        ownersLength--;
         if (requiredApprovals > ownersLength){
-            changeRequirement(ownersLength);
+            _changeRequirement(ownersLength);
         }
 
         emit OwnerRemoved(_oldOwner);

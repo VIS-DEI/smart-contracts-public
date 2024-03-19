@@ -40,6 +40,7 @@ contract Launchpad is TimeMultisig {
         uint priceBeforeSlippage = startPrice + (totalSold * (endPrice - startPrice) / total);
         uint priceAfterSlippage = startPrice + ((totalSold + _amount) * (endPrice - startPrice) / total);
         price = (priceBeforeSlippage + priceAfterSlippage) * _amount / 2 / 10**visDecimals;
+        require(price != 0, "Launchpad: Amount too small");
     }
 
     /**
